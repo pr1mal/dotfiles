@@ -52,8 +52,6 @@ export PATH=$(echo $PATH | sed 's#^\(.*\)\(/usr/local/bin:\)\(.*\)#\2\1\3#')
 
 # Functions
 
-function up_to_ncvm2 () { tar cf - $* | ssh ncvm2 "tar xf - -C dev/NetworkAutomation/Subsystems/Core/rails"; }
-
 function dircmp () {
 	if [[ "$1" == "--help" || "$1" == "-h" ]]; then
 		echo "Usage:"
