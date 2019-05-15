@@ -42,13 +42,10 @@ function rm_known_host() {
     sed -e "$1d" -i.bak ~/.ssh/known_hosts
 }
 
-#export PATH="$HOME/.gem/ruby/2.0.0/bin:/usr/local/mysql/bin:$PATH"
-
 # move /usr/local/bin to the very beginning
 export PATH=$(echo $PATH | sed 's#^\(.*\)\(/usr/local/bin:\)\(.*\)#\2\1\3#')
 
-# commented this out due to RVM complains
-# export GEM_HOME=$HOME/.gem/ruby/2.0.0
+export PATH="/usr/local/sbin:$PATH"
 
 # Functions
 
