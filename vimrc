@@ -14,6 +14,9 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'micha/vim-colors-solarized'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -21,17 +24,11 @@ filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 if has("gui_macvim")
-	set guifont=Envy_Code_R:h16
+	"set guifont=Envy_Code_R:h16
+	set guifont=Hack\ Nerd\ Font:h14
+	set linespace=4
 	set guioptions=acegm
 endif
 " ------------------------------------------------------------------
@@ -44,8 +41,9 @@ colorscheme solarized
 " ------------------------------------------------------------------
 
 
-" statusline with Git
-set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+" airline config
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='solarized'
 
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd FileType ruby,haml,eruby,yaml,html set ai sw=2 sts=2 et
