@@ -1,4 +1,11 @@
+# Aliases
+alias v='less'
+alias ls='gls --color'
+alias dircolors='gdircolors'
+alias find='gfind'
+
 # Path to your oh-my-zsh configuration.
+ZSH_DISABLE_COMPFIX=true
 export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
@@ -6,7 +13,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #export ZSH_THEME="mh"
-export ZSH_THEME="avit"
+export ZSH_THEME="kennethreitz"
 
 # Set to this to use case-sensitive completion
 # export CASE_SENSITIVE="true"
@@ -22,15 +29,12 @@ export ZSH_THEME="avit"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew emacs common-aliases)
+plugins=(git git-flow brew common-aliases docker docker-compose marked 1password node npm themes zsh-dircolors-solarized)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-
-alias v='less'
-unalias ls
-alias ls='gls --color'
+source ~/.profile
 
 export EDITOR=vim
 
@@ -88,3 +92,4 @@ function mvln () {
 	fi
 }
 
+export PATH="/usr/local/opt/ruby/bin:$PATH"
