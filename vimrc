@@ -44,6 +44,8 @@ colorscheme solarized
 " airline config
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='solarized'
+let g:airline_inactive_collapse=1
+let g:airline_powerline_fonts = 1
 
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd FileType ruby,haml,eruby,yaml,html set ai sw=2 sts=2 et
