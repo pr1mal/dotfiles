@@ -56,6 +56,7 @@ let g:airline_powerline_fonts = 1
 " ------------------------------------------------------------------
 syntax enable
 set incsearch
+set ignorecase
 set cursorline
 set tabstop=4
 set shiftwidth=4
