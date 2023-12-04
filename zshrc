@@ -41,11 +41,6 @@ export EDITOR=vim
 # I don't want shared history
 unsetopt share_history
 
-# removes specified line from ~/.ssh/known_hosts
-function rm_known_host() {
-    sed -e "$1d" -i.bak ~/.ssh/known_hosts
-}
-
 # move /usr/local/bin to the very beginning
 export PATH=$(echo $PATH | sed 's#^\(.*\)\(/usr/local/bin:\)\(.*\)#\2\1\3#')
 

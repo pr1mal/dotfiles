@@ -1,10 +1,10 @@
 # Aliases
 #alias find='/usr/local/bin/gfind'
 #alias xargs='/usr/local/bin/gxargs'
-alias ls='/usr/local/bin/gls --color=auto'
+#alias ls='/usr/local/bin/gls --color=auto'
 #alias l='ls -l'
 #alias la='ls -la'
-alias gitaddall="git status | grep 'modified:' | cut -d' ' -f4 | xargs git add"
+#alias gitaddall="git status | grep 'modified:' | cut -d' ' -f4 | xargs git add"
 
 # Functions
 
@@ -45,6 +45,11 @@ function mvln () {
 		mv $src $dest
 		ln -s $dest $src
 	fi
+}
+
+# removes specified line from ~/.ssh/known_hosts
+function rm_known_host() {
+    sed -e "$1d" -i.bak ~/.ssh/known_hosts
 }
 
 
