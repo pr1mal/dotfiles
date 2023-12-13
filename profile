@@ -1,3 +1,6 @@
+#!/bin/bash
+# vim ft=bash:ts=2:sw=2
+
 # Aliases
 #alias find='/usr/local/bin/gfind'
 #alias xargs='/usr/local/bin/gxargs'
@@ -27,7 +30,7 @@ function dircmp () {
 				echo $line \
 				;; \
 		esac ; \
-	done | view "+set syntax=diff" -	
+	done | view "+set syntax=diff" -
 }
 
 # move SRC file to DEST and create a symlink named SRC pointing to DEST
@@ -52,4 +55,21 @@ function rm_known_host() {
     sed -e "$1d" -i.bak ~/.ssh/known_hosts
 }
 
+## brew: list packages dependent on specified package
+function brew_deps() {
+	cask=$1
+	[[ -z "$cask" ]] && return -1
+	echo -ne "\x1B[1;34m $cask \x1B[0m";
+	brew uses $cask --installed | awk '{printf(" %s ", $0)}';
+}
 
+function brew_all_deps() {
+	if [[ ! -x $(which brew) ]]; then
+		echo "no 'brew' executable found, exiting"
+		return -1
+	fi
+	brew list -1 | while read cask; do
+		brew_deps $cask
+	echo "";
+	done
+}
