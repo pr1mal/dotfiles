@@ -11,7 +11,7 @@
 
 # Functions
 
-function dircmp () {
+function dircmp() {
 	if [[ "$1" == "--help" || "$1" == "-h" ]]; then
 		echo "Usage:"
 		echo "$(basename $0) path/to/new_dir path_to/old_dir"
@@ -19,27 +19,34 @@ function dircmp () {
 	fi
 	dir1=$1
 	dir2=$2
-	diff -rq $dir1 $dir2 | \
-	while read line; do \
-		case $line in \
-			Files*) \
-				cmd=`echo $line | sed 's#^Files \(.*\) and \(.*\) differ$#diff -u \2 \1#g'` ; \
-				eval $cmd \
-				;; \
-			*) \
-				echo $line \
-				;; \
-		esac ; \
-	done | view "+set syntax=diff" -
+	diff -rq $dir1 $dir2 |
+		while read line; do
+			case $line in
+			Files*)
+				cmd=$(echo $line | sed 's#^Files \(.*\) and \(.*\) differ$#diff -u \2 \1#g')
+				eval $cmd
+				;;
+			*)
+				echo $line
+				;;
+			esac
+		done | view "+set syntax=diff" -
 }
 
-# move SRC file to DEST and create a symlink named SRC pointing to DEST
-# DEST can be either file or directory, while moving, starting dot in filename is removed,
-# but it's still kept in symlink name. Example:
-# $ mvln ~/.zshrc ~/projects/dotfiles/
-# $ ls -l .zshrc
-# lrwxr-xr-x 1 evgenysokolov staff 30 Jul 19 15:16 .zshrc -> projects/dotfiles/zshrc
-function mvln () {
+function mvln() {
+	HELP='
+Usage: mvln <SRC> <DEST>
+
+Move SRC file to DEST and create a symlink named SRC pointing to DEST, DEST can be
+either file or directory. While moving, starting dot in filename is removed, but
+it is still kept in symlink name.
+
+Example:
+$ mvln ~/.zshrc ~/projects/dotfiles/
+$ ls -l .zshrc
+lrwxr-xr-x 1 evgenysokolov staff 30 Jul 19 15:16 .zshrc -> projects/dotfiles/zshrc
+'
+	[ -z "$1" -o -z "$2" ] && echo $HELP && return -1
 	src=$1
 	file=$(basename $src)
 	dest=$2
@@ -52,15 +59,15 @@ function mvln () {
 
 # removes specified line from ~/.ssh/known_hosts
 function rm_known_host() {
-    sed -e "$1d" -i.bak ~/.ssh/known_hosts
+	sed -e "$1d" -i.bak ~/.ssh/known_hosts
 }
 
 ## brew: list packages dependent on specified package
 function brew_deps() {
 	cask=$1
 	[[ -z "$cask" ]] && return -1
-	echo -ne "\x1B[1;34m $cask \x1B[0m";
-	brew uses $cask --installed | awk '{printf(" %s ", $0)}';
+	echo -ne "\x1B[1;34m $cask \x1B[0m"
+	brew uses $cask --installed | awk '{printf(" %s ", $0)}'
 }
 
 function brew_all_deps() {
@@ -70,6 +77,6 @@ function brew_all_deps() {
 	fi
 	brew list -1 | while read cask; do
 		brew_deps $cask
-	echo "";
+		echo ""
 	done
 }
