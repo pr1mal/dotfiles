@@ -30,7 +30,7 @@ function dircmp() {
 				echo $line
 				;;
 			esac
-		done | view "+set syntax=diff" -
+		done | nvim -dR -
 }
 
 function mvln() {
