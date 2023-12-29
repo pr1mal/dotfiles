@@ -10,6 +10,24 @@
 #alias gitaddall="git status | grep 'modified:' | cut -d' ' -f4 | xargs git add"
 
 # Functions
+function marked() {
+	help='
+launch Marked in background, w/o blocking terminal
+Usage: marked <markdown file>
+'
+	marked_bin="/Applications/Setapp/Marked.app"
+	if [[ ! -d $marked_bin ]]; then
+		echo 'install Marked from SetApp'
+		return -1
+	fi
+	if [[ "$1" == "--help" || "$1" == "-h" ]]; then
+		echo $help
+		return 0
+	fi
+	file=$1
+	[[ ! -f $file ]] && return -1
+	open -a $marked_bin $file
+}
 
 function dircmp() {
 	if [[ "$1" == "--help" || "$1" == "-h" ]]; then
