@@ -11,10 +11,10 @@ keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
 -- resize windows
-keymap.set("n", "<A-w>k", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-keymap.set("n", "<A-w>j", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-keymap.set("n", "<A-w>l", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-keymap.set("n", "<A-w>h", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+keymap.set("n", "<A-w>k", "<cmd>resize +4<cr>", { desc = "Increase window height" })
+keymap.set("n", "<A-w>j", "<cmd>resize -4<cr>", { desc = "Decrease window height" })
+keymap.set("n", "<A-w>l", "<cmd>vertical resize +4<cr>", { desc = "Increase window width" })
+keymap.set("n", "<A-w>h", "<cmd>vertical resize -4<cr>", { desc = "Decrease window width" })
 
 -- Move Lines
 keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
