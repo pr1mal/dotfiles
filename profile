@@ -9,6 +9,8 @@
 #alias la='ls -la'
 #alias gitaddall="git status | grep 'modified:' | cut -d' ' -f4 | xargs git add"
 
+export EDITOR=nvim
+
 # Functions
 function marked() {
 	help='
