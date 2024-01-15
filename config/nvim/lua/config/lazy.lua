@@ -8,7 +8,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 local theme = "solarized-osaka"
 if vim.g.neovide then
-  theme = "tokyonight"
+  theme = "solarized-osaka" --"tokyonight"
 end
 
 require("lazy").setup({
