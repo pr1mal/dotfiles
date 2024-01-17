@@ -6,9 +6,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-local theme = "solarized-osaka"
+local theme = "nord" --  "solarized-osaka"
 if vim.g.neovide then
-  theme = "solarized-osaka" --"tokyonight"
+  theme = "gruvbox" --"tokyonight"
 end
 
 require("lazy").setup({
@@ -37,7 +37,7 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  -- install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "tokyonight", "nord", "solarized-osaka", "gruvbox" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
