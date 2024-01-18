@@ -94,5 +94,5 @@ export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/opt/findutils/libe
 # add LunarVim to path
 export PATH="/Users/es/.local/bin:$PATH"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
+# load work config and functions if exists
+test -r ~/work && test -r ~/work/.config && source ~/work/.config
