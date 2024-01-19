@@ -53,21 +53,17 @@ guakeApp({
 });
 guakeApp({
   key: "f3",
-  //modifiers: ["alt"],
   appName: "NotePlan",
-  //position: leftHalf,
+  followsMouse: true,
+  hideOnBlur: false,
+});
+guakeApp({
+  key: "f4",
+  appName: "Slack",
   followsMouse: true,
   hideOnBlur: false,
 });
 /*
-guakeApp({
-  key: "escape",
-  modifiers: ["alt"],
-  appName: "Messages",
-  position: lowerLeftHalf,
-  followsMouse: true,
-  hideOnBlur: false,
-});
 guakeApp({
   key: "p",
   modifiers: ["alt"],
