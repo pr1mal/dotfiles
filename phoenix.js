@@ -63,15 +63,14 @@ guakeApp({
   followsMouse: true,
   hideOnBlur: false,
 });
-/*
 guakeApp({
-  key: "p",
-  modifiers: ["alt"],
-  appName: "Spotify",
+  key: "f5",
+  appName: "BusyCal",
   position: full,
   followsMouse: true,
   hideOnBlur: false,
 });
+/*
 guakeApp({
   key: "r",
   modifiers: ["alt"],
