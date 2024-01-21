@@ -5,11 +5,6 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
--- New tab
-keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
-
 -- resize windows
 keymap.set("n", "<A-w>k", "<cmd>resize +4<cr>", { desc = "Increase window height" })
 keymap.set("n", "<A-w>j", "<cmd>resize -4<cr>", { desc = "Decrease window height" })
