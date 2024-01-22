@@ -11,9 +11,10 @@ if vim.g.neovide then
   vim.o.guifont = "JetBrainsMono Nerd Font:h13"
 
   -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-  vim.g.neovide_transparency = 0.85
-  vim.g.transparency = 0.85
-  --vim.g.neovide_background_color = "#0f1117" .. alpha()
+  -- vim.g.neovide_transparency = 0 --.95
+  -- vim.g.transparency = 0.85
+  -- vim.g.neovide_window_blurred = true
+  -- vim.g.neovide_background_color = "#0f1117" .. alpha()
 
   vim.g.neovide_input_macos_alt_is_meta = true
   vim.g.neovide_hide_mouse_when_typing = true
@@ -23,4 +24,4 @@ if vim.g.neovide then
   vim.keymap.set("", "<ScrollWheelLeft>", "<Nop>", { silent = true })
 end
 
-vim.o.relativenumber = false
+vim.o.relativenumber = true
