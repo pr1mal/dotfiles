@@ -4,6 +4,7 @@ return {
   {
     "glebzlat/Arduino.nvim",
     branch = "dev",
+    lazy = true,
     config = function()
       local ok, arduino = pcall(require, "arduino")
       if not ok then
