@@ -19,20 +19,21 @@ return {
   },
   {
     "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
+    lazy = true,
     opts = {},
   },
   { "ellisonleao/gruvbox.nvim" },
   {
     "shaunsingh/nord.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
       vim.g.nord_contrast = false
       vim.g.nord_borders = true
       vim.g.nord_disable_background = not is_neovide()
-      vim.g.nord_italic = true
+      vim.g.nord_italic = false
       vim.g.nord_uniform_diff_background = false
-      vim.g.nord_bold = true
+      vim.g.nord_bold = false
     end,
   },
 }
