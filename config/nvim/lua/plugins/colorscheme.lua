@@ -1,4 +1,4 @@
-function is_neovide()
+local function is_neovide()
   if vim.g.neovide then
     return true
   else
@@ -30,10 +30,10 @@ return {
     config = function()
       vim.g.nord_contrast = false
       vim.g.nord_borders = true
-      vim.g.nord_disable_background = not is_neovide()
-      vim.g.nord_italic = false
+      vim.g.nord_disable_background = true -- not is_neovide()
+      vim.g.nord_italic = true
       vim.g.nord_uniform_diff_background = false
-      vim.g.nord_bold = false
+      vim.g.nord_bold = true
     end,
   },
 }
