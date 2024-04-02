@@ -8,7 +8,7 @@ local alpha = function()
 end
 
 if vim.g.neovide then
-  vim.o.guifont = "JetBrainsMono Nerd Font:h15"
+  vim.o.guifont = "JetBrainsMono Nerd Font:h13"
 
   -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
   -- vim.g.neovide_transparency = 0 --.95
