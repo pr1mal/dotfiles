@@ -3,15 +3,11 @@
 ###
 # Set up PATH
 #
-#
-# add GNU utils to the PATH - find, xargs, locate, tar
-export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:$PATH"
 # add LunarVim to path
-export PATH="/Users/es/.local/bin:$PATH"
+export PATH="/Users/es/.local/bin:/Users/es/.gem/bin:$PATH"
 
 # load work config and functions if exists
 test -r ~/work && test -r ~/work/.config && source ~/work/.config
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 #
 ###
 
@@ -81,7 +77,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # tmux plugin configuration
-ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART=false
 ZSH_TMUX_AUTOSTART_ONCE=true
 
 # fzf plugin settings
@@ -92,7 +88,7 @@ ZSH_TMUX_AUTOSTART_ONCE=true
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aliases tmux zsh-interactive-cd fzf git brew nvm node npm)
+plugins=(aliases zsh-interactive-cd fzf git brew nvm node npm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,3 +104,17 @@ export GEM_HOME="$HOME/.gem"
 
 source ~/.profile
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/es/work/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/es/work/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/es/work/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/es/work/google-cloud-sdk/completion.zsh.inc'; fi
+export JAVA_HOME=`/usr/libexec/java_home -v 11`
+alias java-11='export JAVA_HOME=`/usr/libexec/java_home -v 11`'
+alias java-21='export JAVA_HOME=`/usr/libexec/java_home -v 21`'
+
+export PATH="$(pyenv root)/shims:$PATH"
+export PATH=/opt/homebrew/opt/grep/libexec/gnubin:$PATH
+export PATH=/opt/homebrew/opt/postgresql@12/bin:$PATH
+export GCLOUD_PROJECT=windfall-dev-329123
+eval "$(/opt/homebrew/bin/mise activate)"
