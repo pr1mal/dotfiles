@@ -1,0 +1,10 @@
+# Tools the shared config expects on Linux: ./install.sh --packages
+zsh
+tmux
+neovim
+stow
+fzf
+wl-clipboard
+lazygit
+ripgrep
+fd-find

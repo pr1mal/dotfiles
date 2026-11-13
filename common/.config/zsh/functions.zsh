@@ -1,5 +1,6 @@
-#!/bin/bash
-# vim ft=bash:ts=2:sw=2
+# Shared aliases and functions, sourced by ~/.zshrc on every machine.
+# OS-specific ones live in ~/.config/zsh/os.zsh.
+# vim: ft=zsh:ts=2:sw=2
 
 # Aliases
 #alias find='/usr/local/bin/gfind'
@@ -8,34 +9,11 @@
 #alias la='ls -la'
 #alias gitaddall="git status | grep 'modified:' | cut -d' ' -f4 | xargs git add"
 
-# Set up dircolors and use GNU ls
-test -r ~/.dir_colors && eval $(gdircolors ~/.dir_colors)
-alias ls='gls --color=auto'
-
 # default editor
 export EDITOR=nvim
 alias vim=nvim
 
 # Functions
-function marked() {
-	help='
-launch Marked in background, w/o blocking terminal
-Usage: marked <markdown file>
-'
-	marked_bin="/Applications/Setapp/Marked.app"
-	if [[ ! -d $marked_bin ]]; then
-		echo 'install Marked from SetApp'
-		return -1
-	fi
-	if [[ "$1" == "--help" || "$1" == "-h" ]]; then
-		echo $help
-		return 0
-	fi
-	file=$1
-	[[ ! -f $file ]] && return -1
-	open -a $marked_bin $file
-}
-
 function dircmp() {
 	if [[ "$1" == "--help" || "$1" == "-h" ]]; then
 		echo "Usage:"
@@ -85,23 +63,4 @@ lrwxr-xr-x 1 evgenysokolov staff 30 Jul 19 15:16 .zshrc -> projects/dotfiles/zsh
 # removes specified line from ~/.ssh/known_hosts
 function rm_known_host() {
 	sed -e "$1d" -i.bak ~/.ssh/known_hosts
-}
-
-## brew: list packages dependent on specified package
-function brew_deps() {
-	cask=$1
-	[[ -z "$cask" ]] && return -1
-	echo -ne "\x1B[1;34m $cask \x1B[0m"
-	brew uses $cask --installed | awk '{printf(" %s ", $0)}'
-}
-
-function brew_all_deps() {
-	if [[ ! -x $(which brew) ]]; then
-		echo "no 'brew' executable found, exiting"
-		return -1
-	fi
-	brew list -1 | while read cask; do
-		brew_deps $cask
-		echo ""
-	done
 }

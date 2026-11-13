@@ -1,13 +1,14 @@
 # My zsh config
+#
+# Shared by every machine. Loads, at the end:
+#   ~/.config/zsh/os.zsh   macOS or Linux specifics (from macos/ or linux/ in the dotfiles repo)
+#   ~/.zshrc.local         this machine only, not in git (work settings, secrets)
 
 ###
 # Set up PATH
 #
 # add LunarVim to path
-export PATH="/Users/es/.local/bin:/Users/es/.gem/bin:$PATH"
-
-# load work config and functions if exists
-test -r ~/work && test -r ~/work/.config && source ~/work/.config
+export PATH="$HOME/.local/bin:$HOME/.gem/bin:$PATH"
 #
 ###
 
@@ -88,7 +89,8 @@ ZSH_TMUX_AUTOSTART_ONCE=true
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aliases zsh-interactive-cd fzf git brew nvm node npm)
+plugins=(aliases zsh-interactive-cd fzf git nvm node npm)
+[[ $OSTYPE == darwin* ]] && plugins+=(brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,19 +104,11 @@ source $ZSH/oh-my-zsh.sh
 ## configure default path for rubygems
 export GEM_HOME="$HOME/.gem"
 
-source ~/.profile
+# shared aliases and functions
+source ~/.config/zsh/functions.zsh
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/es/work/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/es/work/google-cloud-sdk/path.zsh.inc'; fi
+# macOS or Linux specifics
+[[ -r ~/.config/zsh/os.zsh ]] && source ~/.config/zsh/os.zsh
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/es/work/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/es/work/google-cloud-sdk/completion.zsh.inc'; fi
-export JAVA_HOME=`/usr/libexec/java_home -v 11`
-alias java-11='export JAVA_HOME=`/usr/libexec/java_home -v 11`'
-alias java-21='export JAVA_HOME=`/usr/libexec/java_home -v 21`'
-
-export PATH="$(pyenv root)/shims:$PATH"
-export PATH=/opt/homebrew/opt/grep/libexec/gnubin:$PATH
-export PATH=/opt/homebrew/opt/postgresql@12/bin:$PATH
-export GCLOUD_PROJECT=windfall-dev-329123
-eval "$(/opt/homebrew/bin/mise activate)"
+# this machine only: not in git (work paths, project IDs, tokens)
+[[ -r ~/.zshrc.local ]] && source ~/.zshrc.local

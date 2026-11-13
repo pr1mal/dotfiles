@@ -1,0 +1,7 @@
+# ~/.zshrc.local: settings for this machine only, sourced at the end of ~/.zshrc.
+# Not in git (the dotfiles repo is public). install.sh creates it from
+# zshrc.local.example when it's missing.
+
+# Work
+# test -r ~/work/.config && source ~/work/.config
+# export GCLOUD_PROJECT=<gcp-project-id>
